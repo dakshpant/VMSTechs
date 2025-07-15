@@ -484,6 +484,36 @@ body {
   align-items: start;
 }
 
+/* Counter Section */
+.widigitsSection {
+  background: #111828;
+  font-family: "Roboto";
+}
+.mainCounter {
+  height: 129px;
+}
+.counterHeadingRelativeImg {
+  top: 10px;
+  left: 100px;
+  width: 127px;
+  height: 2px;
+}
+.counterDiv {
+  width: 146px;
+}
+
+.countText {
+  font-size: 70px;
+}
+.countHeading {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
 /* ------------------------------------------------------------------------- */
 /* Media Query */
 /* @media (min-width: 576px) and (max-width: 768px) {
