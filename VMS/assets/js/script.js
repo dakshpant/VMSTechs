@@ -66,10 +66,6 @@ class TextScramble {
   }
 }
 
-// ——————————————————————————————————————————————————
-// Example
-// ——————————————————————————————————————————————————
-
 const phrases = [
   'Web Design',
   'Mobile App',
@@ -93,28 +89,3 @@ const next = () => {
 
 next()
 
-// Horizpntal Accordian
-
-document.addEventListener("DOMContentLoaded", function () {
-  const headers = document.querySelectorAll(".accordion .card-header");
-
-  headers.forEach(header => {
-    header.addEventListener("click", function () {
-      const targetId = header.getAttribute("data-target");
-      const target = document.querySelector(targetId);
-      const isVisible = target.classList.contains("show");
-
-      // Hide all panels
-      document.querySelectorAll(".accordion .collapse").forEach(panel => {
-        panel.classList.remove("show");
-        panel.style.width = "0";
-      });
-
-      // Toggle the clicked one
-      if (!isVisible) {
-        target.classList.add("show");
-        target.style.width = "100%";
-      }
-    });
-  });
-});

@@ -204,29 +204,24 @@ body {
   z-index: 2;
   pointer-events: none;
 }
-
 .slider::before {
   left: 0;
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 100%);
 }
-
 .slider::after {
   right: 0;
   background: linear-gradient(to left, rgba(255, 255, 255, 0) 100%);
 }
-
 /* SLIDE TRACK (AUTOPLAY & PAUSE ON HOVER) */
 .slide-track {
   display: flex;
   width: calc(278px * 8); /* 5 images duplicated => 10 slides */
   animation: scroll 10s linear infinite;
 }
-
 /* PAUSE ON HOVER */
 .slider:hover .slide-track {
   animation-play-state: paused;
 }
-
 /* SLIDE */
 .slide {
   flex: 0 0 auto;
@@ -514,6 +509,136 @@ body {
   line-height: normal;
 }
 
+/* Projects Section */
+/* .projectsSection {
+  background: #00001d;
+  width: 1440px;
+  height: 1173px;
+} */
+.projectsSection {
+  height: 1173px; /* Fixed full-screen height */
+  background-color: #00001d;
+  overflow: hidden;
+  position: relative;
+}
+
+.projectsSection .container {
+  height: 100%;
+  overflow-y: scroll; /* Enable scroll inside container */
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  perspective: 1000px; /* Enables 3D effect for parallax */
+}
+
+/* Optional: Add scroll-snap for cleaner experience */
+.projectsSection .row {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 260px);
+  grid-auto-rows: 1fr;
+  gap: 1rem;
+  /* padding: 1rem; */
+}
+
+/* Each .col becomes a snap point */
+.projectsSection .col {
+  /* scroll-snap-align: start; */
+  transform: translateZ(1); /* Force GPU acceleration */
+  will-change: transform;
+  /* transition: transform 0.2s ease; */
+  /* opacity: 0.5; */
+  transition: transform 0.3s ease, opacity 1 ease;
+}
+
+.projectsSection .col img {
+  /* max-width: 100%; */
+  width: 240px;
+  /* height: auto; */
+  transition: transform 0.2s ease;
+}
+.projectsSection .MiddleDiv {
+  transform: none !important; /* Prevent any JS transform override */
+  z-index: 2;
+}
+
+.projectsSection .MiddleDiv h1 {
+  width: 250px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.moveUp img {
+  margin-top: -10em;
+  width: 100%;
+}
+.moveDown img {
+  margin-top: 5em;
+  width: 100%;
+}
+/* Footer Section */
+.footerSection {
+  /* margin-top: -15em; */
+  /* z-index: 1; */
+  background: #00001d;
+  height: 414px;
+}
+.upperHeader div {
+  display: inline-flex;
+  padding: 12px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 29px;
+  border: 1px solid #55b6fb;
+  background: #1a1b3a;
+}
+/* Footer Section */
+.footerSection {
+  /* margin-top: -15em;
+  z-index: 1; */
+  background: #00001d;
+  height: 414px;
+ 
+}
+.upperHeader div {
+  display: inline-flex;
+  padding: 12px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 29px;
+  border: 1px solid #55b6fb;
+  background: #1a1b3a;
+}
+.lowerHeader {
+  width: 692px;
+}
+.lowerHeader h1 {
+  color: #fff;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.lowerBtn a {
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(180deg, #008bee 0%, #5d3cbe 100%);
+}
+/* Lower Footer */
+.lowerDivBG {
+   background: url(../images/lowerFooterBg.svg);
+   background-position: bottom;
+ height: 331px;
+}
 /* ------------------------------------------------------------------------- */
 /* Media Query */
 /* @media (min-width: 576px) and (max-width: 768px) {
