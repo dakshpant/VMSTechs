@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: black;
+    }
+    .lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1;
+  transition: 1.5s all ease;
+}
+
+.animated .lines {
+  opacity: 1;
+}
+
+.line-container {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.animated-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+  animation: moveLine 3s linear infinite;
+}
+
+/* Line Animation */
+@keyframes moveLine {
+  0% {
+    transform: translateX(-60%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animated-line {
+  animation: moveLine 3s linear infinite;
+}
+
+/* Responsive top position */
+.line-container {
+  top: 21%;
+}
+@media (max-width: 1679px) {
+  .line-container {
+    top: 10%;
+  }
+}
+@media (max-width: 1279px) {
+  .line-container {
+    top: 18%;
+  }
+}
+@media (max-width: 1023px) {
+  .line-container {
+    top: 30%;
+  }
+}
+@media (max-width: 990px) {
+  .line-container {
+    top: 35%;
+  }
+}
+@media (max-width: 767px) {
+  .line-container {
+    top: 40%;
+  }
+}
+@media (max-width: 479px) {
+  .line-container {
+    top: 36%;
+  }
+}
+@media (max-width: 374px) {
+  .line-container {
+    display: none;
+  }
+}
+
+/* Individual rotations and positions */
+.line-container:nth-child(1) {
+  left: 0;
+  transform: rotate(90deg);
+}
+.line-container:nth-child(2) {
+  left: 4.5%;
+  transform: rotate(75deg);
+}
+.line-container:nth-child(3) {
+  right: 4.5%;
+  transform: rotate(105deg);
+}
+.line-container:nth-child(4) {
+  left: 9.5%;
+  transform: rotate(60deg);
+}
+.line-container:nth-child(5) {
+  right: 9.5%;
+  transform: rotate(120deg);
+}
+.line-container:nth-child(6) {
+  left: 15.8%;
+  transform: rotate(45deg);
+}
+.line-container:nth-child(7) {
+  right: 15.8%;
+  transform: rotate(135deg);
+}
+.line-container:nth-child(8) {
+  left: 25%;
+  transform: rotate(30deg);
+}
+.line-container:nth-child(9) {
+  right: 25%;
+  transform: rotate(150deg);
+}
+.line-container:nth-child(10) {
+  left: 48.5%;
+  transform: rotate(15deg);
+}
+.line-container:nth-child(11) {
+  right: 48.5%;
+  transform: rotate(165deg);
+}
+
+/* Animation delay for central lines */
+.line-container:nth-child(10) .animated-line,
+.line-container:nth-child(11) .animated-line {
+  animation-delay: 0.5s;
+}
+
+@media (max-width: 990px) {
+  .line-container:nth-child(10) {
+    left: 43%;
+    transform: rotate(34deg);
+  }
+  .line-container:nth-child(11) {
+    right: 43%;
+    transform: rotate(146deg);
+  }
+  .line-container:nth-child(10) .animated-line,
+  .line-container:nth-child(11) .animated-line {
+    animation-delay: 0s;
+  }
+}
+
+@media (max-width: 767px) {
+  .line-container:nth-child(10) {
+    left: 36%;
+    transform: rotate(49deg);
+  }
+  .line-container:nth-child(11) {
+    right: 36%;
+    transform: rotate(131deg);
+  }
+}
+</style>
+<body>
+    <div class="lines ">
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+                <div class="line-container">
+                    <div class="animated-line"></div>
+                </div>
+            </div>
+</body>
+</html>

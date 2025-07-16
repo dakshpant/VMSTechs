@@ -10,13 +10,7 @@ body {
   font-family: "Roboto", sans-serif;
   background: #00001d !important;
 }
-/* HEro BG */
-.heroBG {
-  background: url(../images/heroImg.png);
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-}
+
 /* Nav */
 .navSection {
   /* background: linear-gradient(90deg,rgba(18, 14, 79, 1) 0%, rgba(49, 6, 74, 1) 100%); */
@@ -53,10 +47,20 @@ body {
   transition-duration: 0.5s;
 }
 /* Hero Section */
+/* Hero BG */
+.heroBG {
+  position: relative;
+  overflow: hidden; /* Ensures animated lines don’t overflow */
+  background: url(../images/heroImg.png);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
 .heroSection {
-  /* background: linear-gradient(180deg,rgba(18, 14, 79, 1) 0%, rgba(0, 0, 29, 1) 49%, rgba(27, 2, 54, 1) 72%, rgba(37, 3, 64, 1) 87%, rgba(44, 4, 70, 1) 100%); */
   padding-bottom: 40px;
   padding-top: 80px;
+  z-index: 2;
 }
 /* Btn Div */
 .heroBtn {
@@ -68,25 +72,142 @@ body {
   padding-left: 30px;
   border: 1px solid #55b6fb;
 }
-/* .with-transparency{
-  --angle: 0deg;
-  border: 2px solid;
-  border-radius: 20px;
-  border-image: linear-gradient(var(--angle), #478FCA, #624DE6) 1;
-  animation: 10s rotate linear infinite;
-  padding: 12px 30px;
+/* Bg Lines Animantion */
+
+.lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1;
+  transition: 1.5s all ease;
 }
 
-@keyframes rotate {
-  to {
-    --angle: 360deg;
+.animated .lines {
+  opacity: 1;
+}
+
+.line-container {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.091);
+
+  .animated-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 100%
+    );
+    animation: moveLine 3s linear infinite;
   }
 }
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-} */
+
+@keyframes moveLine {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(800%);
+  }
+}
+
+.animated-line {
+}
+
+/* Individual rotations and positions */
+.line-container:nth-child(1) {
+  left: 0;
+  transform: rotate(90deg);
+}
+.line-container:nth-child(2) {
+  left: 4.5%;
+  transform: rotate(75deg);
+}
+.line-container:nth-child(3) {
+  right: 4.5%;
+  transform: rotate(105deg);
+}
+.line-container:nth-child(4) {
+  left: 9.5%;
+  transform: rotate(60deg);
+}
+.line-container:nth-child(5) {
+  right: 9.5%;
+  transform: rotate(120deg);
+}
+.line-container:nth-child(6) {
+  left: 15.8%;
+  transform: rotate(45deg);
+}
+.line-container:nth-child(7) {
+  right: 15.8%;
+  transform: rotate(135deg);
+}
+.line-container:nth-child(8) {
+  left: 25%;
+  transform: rotate(30deg);
+}
+.line-container:nth-child(9) {
+  right: 25%;
+  transform: rotate(150deg);
+}
+.line-container:nth-child(10) {
+  left: 48.5%;
+  transform: rotate(15deg);
+}
+.line-container:nth-child(11) {
+  right: 48.5%;
+  transform: rotate(165deg);
+}
+
+/* Animation delay for central lines */
+.line-container:nth-child(10) .animated-line,
+.line-container:nth-child(11) .animated-line {
+  animation-delay: 0.5s;
+}
+
+@media (max-width: 990px) {
+  .line-container:nth-child(10) {
+    left: 43%;
+    transform: rotate(34deg);
+  }
+  .line-container:nth-child(11) {
+    right: 43%;
+    transform: rotate(146deg);
+  }
+  .line-container:nth-child(10) .animated-line,
+  .line-container:nth-child(11) .animated-line {
+    animation-delay: 0s;
+  }
+}
+
+@media (max-width: 767px) {
+  .line-container:nth-child(10) {
+    left: 36%;
+    transform: rotate(49deg);
+  }
+  .line-container:nth-child(11) {
+    right: 36%;
+    transform: rotate(131deg);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animated-line {
+    animation: none;
+  }
+}
+
 .with-transparency {
   position: relative;
   width: auto;
@@ -367,6 +488,18 @@ body {
   font-weight: 700;
   line-height: normal;
 }
+/* Why Chose Us Section */
+
+.containBody {
+  width: 1303px;
+  height: 582px;
+  padding: 50px 60px;
+  gap: 94px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  background: #0e0f23;
+}
+
 /* Horizontal Accordion Product section */
 .productsSectionExtras {
   bottom: 115%;
@@ -578,12 +711,15 @@ body {
 }
 /* Footer Section */
 .footerSection {
-  /* margin-top: -15em; */
-  /* z-index: 1; */
   background: #00001d;
-  height: 414px;
+  overflow-x: hidden; /* prevent X scroll */
 }
-.upperHeader div {
+
+.upperHalf {
+  height: 383px;
+}
+
+.upperHeader {
   display: inline-flex;
   padding: 12px 30px;
   justify-content: center;
@@ -593,52 +729,58 @@ body {
   border: 1px solid #55b6fb;
   background: #1a1b3a;
 }
-/* Footer Section */
-.footerSection {
-  /* margin-top: -15em;
-  z-index: 1; */
-  background: #00001d;
-  height: 414px;
- 
-}
-.upperHeader div {
-  display: inline-flex;
-  padding: 12px 30px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 29px;
-  border: 1px solid #55b6fb;
-  background: #1a1b3a;
-}
+
 .lowerHeader {
   width: 692px;
 }
+
 .lowerHeader h1 {
   color: #fff;
   text-align: center;
   font-family: Roboto;
   font-size: 54px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
 }
+
 .lowerBtn a {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, #008bee 0%, #5d3cbe 100%);
+  color: white;
+}
+
+.lowerDiv {
+  background: url(../images/lowerFooterBg.svg) no-repeat center center;
+  background-size: cover; /* FIXED: ensures background stretches */
+  height: 331px;
+  width: 100%;
+}
+
+.lowerDiv footer {
+  padding-top: 160px;
+}
+
+.footerLinks {
+  text-decoration: none;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 700;
+}
+.copyrightText {
+  padding: 10px;
+  color: #fff;
   font-family: Roboto;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(180deg, #008bee 0%, #5d3cbe 100%);
 }
-/* Lower Footer */
-.lowerDivBG {
-   background: url(../images/lowerFooterBg.svg);
-   background-position: bottom;
- height: 331px;
-}
+
 /* ------------------------------------------------------------------------- */
 /* Media Query */
 /* @media (min-width: 576px) and (max-width: 768px) {
