@@ -11,3 +11,19 @@ accordions.forEach(acc => {
     acc.classList.add('expanded');
   });
 });
+// Vertical Accordion
+  const VerticalAccordions = document.querySelectorAll('.verticalAccordion');
+
+  // Set default open accordion
+  document.querySelector('.accThree')?.classList.add('expanded');
+
+VerticalAccordions.forEach(acc => {
+    acc.addEventListener('click', () => {
+      // Collapse others
+     VerticalAccordions.forEach(other => other.classList.remove('expanded'));
+      // Expand this one
+      acc.classList.add('expanded');
+    });
+  });
+
+

@@ -15,7 +15,7 @@ window.addEventListener('scroll', ()=>{
 class TextScramble {
   constructor(el) {
     this.el = el
-    this.chars = '!<>-_\\/[]{}—=+*^?#________abcdefghijklmnopqrstuvwxyz'
+    this.chars = '!<>-_\\/[]{}—=+*^?#________ kjskdvlh'
     this.update = this.update.bind(this)
   }
   setText(newText) {

@@ -1,74 +1,58 @@
 
-  const container = document.querySelector('.projectsSection .container');
-  const cols = document.querySelectorAll('.projectsSection .col');
+  // const container = document.querySelector('.projectsSection .container');
+  // const cols = document.querySelectorAll('.projectsSection .col');
 
-  container.addEventListener('scroll', () => {
-    const scrollTop = container.scrollTop;
+  // container.addEventListener('scroll', () => {
+  //   const scrollTop = container.scrollTop;
 
-    cols.forEach((col) => {
-      // Skip middle divs from parallax
-      if (col.classList.contains('MiddleDiv')) {
-        col.style.transform = 'none';
-        return;
-      }
+  //   cols.forEach((col) => {
+  //     // Skip middle divs from parallax
+  //     if (col.classList.contains('MiddleDiv')) {
+  //       col.style.transform = 'none';
+  //       return;
+  //     }
 
-      // Determine scroll direction effect
-      if (col.classList.contains('moveUp')) {
-        col.style.transform = `translateY(${-scrollTop * 0.1}px)`;
-      } else if (col.classList.contains('moveDown')) {
-        col.style.transform = `translateY(${scrollTop * 0.1}px)`;
-      }
-    });
+  //     // Determine scroll direction effect
+  //     if (col.classList.contains('moveUp')) {
+  //       col.style.transform = `translateY(${-scrollTop * 0.05}px)`;
+  //     } else if (col.classList.contains('moveDown')) {
+  //       col.style.transform = `translateY(${scrollTop * 0.03}px)`;
+  //     }
+  //   });
+  // });
+
+const container = document.querySelector('.projectsSection .container');
+const cols = document.querySelectorAll('.projectsSection .col');
+const section = document.querySelector('.projectsSection');
+
+container.addEventListener('scroll', () => {
+  const scrollTop = container.scrollTop;
+
+  // Get viewport height and section position
+  const rect = section.getBoundingClientRect();
+  const sectionMiddle = rect.top + rect.height / 2;
+  const viewportMiddle = window.innerHeight / 2;
+
+  // Only apply parallax if the middle of the section is near the middle of the viewport
+  const isMiddleVisible = Math.abs(sectionMiddle - viewportMiddle) < 200; // adjust threshold as needed
+
+  cols.forEach((col) => {
+    if (!isMiddleVisible) {
+      col.style.transform = 'none';
+      return;
+    }
+
+    // Skip middle divs
+    if (col.classList.contains('MiddleDiv')) {
+      col.style.transform = 'none';
+      return;
+    }
+
+    // Apply parallax scroll effect
+    if (col.classList.contains('moveUp')) {
+      col.style.transform = `translateY(${-scrollTop * 0.2}px)`;
+    } else if (col.classList.contains('moveDown')) {
+      col.style.transform = `translateY(${scrollTop * 0.2}px)`;
+    }
   });
-
-// M3
-// (() => {
-//   const container = document.querySelector('.projectsSection .container');
-//   if (!container) return;
-
-//   const cols = Array.from(container.querySelectorAll('.col'));
-//   const animatedCols = cols.filter(col => !col.classList.contains('MiddleDiv'));
-
-//   let lastScrollTop = 0;
-//   let ticking = false;
-//   let scrollResetTimeout;
-
-//   function applyParallax(scrollTop) {
-//     animatedCols.forEach(col => {
-//       const direction = col.classList.contains('moveUp') ? -1 : 1;
-//       const offset = scrollTop * 0.1 * direction;
-//       col.style.transform = `translateY(${offset}px)`;
-//     });
-//   }
-
-//   function resetParallax() {
-//     animatedCols.forEach(col => {
-//       col.style.transform = 'none';
-//     });
-//   }
-
-//   function onScroll() {
-//     lastScrollTop = container.scrollTop;
-
-//     if (!ticking) {
-//       window.requestAnimationFrame(() => {
-//         applyParallax(lastScrollTop);
-//         ticking = false;
-//       });
-//       ticking = true;
-//     }
-
-//     clearTimeout(scrollResetTimeout);
-//     scrollResetTimeout = setTimeout(() => {
-//       resetParallax();
-//     }, 150);
-//   }
-
-//   container.addEventListener('scroll', onScroll);
-// })();
-
-// if (Math.abs(offset) < 400) {
-//   col.classList.add('visible');
-// } else {
-//   col.classList.remove('visible');
-// }
+});
