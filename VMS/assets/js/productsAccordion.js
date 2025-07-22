@@ -2,7 +2,6 @@ const accordions = document.querySelectorAll('.accordion');
 //Sets .accThree as expanded initially
 document.querySelector('.accThree').classList.add('expanded');
 
-// On mouseenter, collapse all others, expand hovered
 accordions.forEach(acc => {
   acc.addEventListener('click', () => {
     accordions.forEach(other => {
@@ -15,7 +14,7 @@ accordions.forEach(acc => {
   const VerticalAccordions = document.querySelectorAll('.verticalAccordion');
 
   // Set default open accordion
-  document.querySelector('.accThree')?.classList.add('expanded');
+  document.querySelector('.VaccThree')?.classList.add('expanded');
 
 VerticalAccordions.forEach(acc => {
     acc.addEventListener('click', () => {
@@ -25,5 +24,6 @@ VerticalAccordions.forEach(acc => {
       acc.classList.add('expanded');
     });
   });
+
 
 
